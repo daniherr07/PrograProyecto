@@ -139,7 +139,11 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cancha.cpp" />
     <ClCompile Include="PrograProyecto.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cancha.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
