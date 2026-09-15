@@ -1,13 +1,14 @@
 #pragma once
 #include <iostream>
-#using namespace std;
+#include <string>
+using namespace std;
 class Cancha
 {
 private:
 	string codigo;
 	string tipoDeporte;
 	double precioHora;
-	char disponible[12]; // Auto, arreglo (char) para saber la disponibilidad del horario
+	char estado[12]; // Auto, arreglo (char) para saber la disponibilidad del horario
 
 public:
 	Cancha(string codigo, string tipo, double precio); //constructor
