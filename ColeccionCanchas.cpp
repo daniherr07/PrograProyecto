@@ -4,12 +4,12 @@
 ColeccionCanchas::ColeccionCanchas(){
 	capacidad = 10;
 	cantidad = 0;
-	canchas = new Cancha * [capacidad]; // Crea el objeto cancha* en el arreglo senalado por cancha**
+	canchas = new Cancha * [capacidad]; // Crea arreglo de punteros a cancha* senalado por cancha**
 }
 
 ColeccionCanchas::~ColeccionCanchas() {
 	for (int i = 0; i < 10; i++) {
-	delete canchas[i]; //Elimina cancha del arreglo cancha*
+	delete canchas[i]; //Elimina objeto cancha senalado por arreglo de punteros cancha*
 }
 	delete[] canchas; 
 }

@@ -26,12 +26,17 @@ void Cancha::setPrecio(double nuevoPrecio) {
 }
 
 char Cancha::getConsultaEstado(int posicion) {
+	if (posicion < 0 || posicion>11) { // Evita posiciones incorrectas
+		return 'X';
+	}
 	return estado[posicion]; 
 }
 
 bool Cancha::setEstado(int posicion, char nuevoEstado) {
-
-	if (nuevoEstado == 'M' && estado[posicion] == 'O') { //Franja ocupada no puede recibir M
+	if (posicion < 0 || posicion>11) { // Evita posiciones incorrectas
+		return false;
+	}
+	else if (nuevoEstado == 'M' && estado[posicion] == 'O') { //Franja ocupada no puede recibir M
 		return false;
 	}
 	else {
