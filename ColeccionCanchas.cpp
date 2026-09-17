@@ -8,7 +8,7 @@ ColeccionCanchas::ColeccionCanchas(){
 }
 
 ColeccionCanchas::~ColeccionCanchas() {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < cantidad; i++) {
 	delete canchas[i]; //Elimina objeto cancha senalado por arreglo de punteros cancha*
 }
 	delete[] canchas; 
@@ -27,7 +27,7 @@ bool ColeccionCanchas::registrarCancha(string codigo, string tipo, double precio
 	if (existeCodigo(codigo)) {
 		return false;  //el codigo ya existe entonces no puede regitrarse
 	}
-	else if (capacidad<=cantidad) { // Ya esta en el maximo de canchas
+	else if (cantidad>=capacidad) { // Ya esta en el maximo de canchas
 		return false;
 	}
 	canchas[cantidad]= new Cancha(codigo,tipo,precio);
@@ -55,7 +55,7 @@ bool ColeccionCanchas::modificarPrecio(string codigo, double nuevoPrecio){
 void ColeccionCanchas::mostrarDisponibilidad(string codigo) {
 	Cancha* cancha = buscarPorCodigo(codigo);
 	if (cancha == nullptr) {
-		cout << "No existe cancha con ese codigo";
+		cout << "No existe cancha con ese codigo" << endl;
 	}
 	else {
 		cancha->mostrarDisponibilidad();
@@ -66,13 +66,13 @@ int ColeccionCanchas::getCantidad() {
 }
 void ColeccionCanchas::mostrarCanchas(){
 	if (cantidad == 0) {
-		cout << "Aun no hay canchas registradas";
+		cout << "Aun no hay canchas registradas"<<endl;
 	}
 	else {
 		for (int i = 0; i < cantidad;i++) {
-			cout << "Codigo de cancha: " << canchas[i]->getCodigo();
-			cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte();
-			cout << "Precio: " << canchas[i]->getPrecio();
+			cout << "Codigo de cancha: " << canchas[i]->getCodigo()<<"\n";
+			cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte()<<"\n";
+			cout << "Precio: " << canchas[i]->getPrecio()<<"\n";
 		}
 	}
 }

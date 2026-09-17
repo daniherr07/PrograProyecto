@@ -4,10 +4,161 @@
 #include <iostream>
 using namespace std;
 
+void ingresarCancha(ColeccionCanchas& canchas) {
+    string codigo;
+    double precio;
+    string deporte;
+
+    cout << "Ingrese el codigo de la cancha:" << endl;
+    cin >> codigo;
+
+    cout << "Ingrese el tipo de deporte:" << endl;
+    cin >> deporte;
+
+    cout << "Ingrese el precio:" << endl;
+   cin>>precio;
+
+    canchas.registrarCancha(codigo, deporte, precio);
+
+    cout << "Cancha "<<codigo<<" registrada"<<endl;
+
+    system("pause");
+}
+
+void mostrarDisponibilidad(ColeccionCanchas& canchas) {
+    string codigo;
+    cout << "Ingrese codigo de la cancha" << endl;
+    cin >> codigo;
+    canchas.mostrarDisponibilidad(codigo);
+    system("pause");
+}
+
+void buscarCancha(ColeccionCanchas& canchas) {
+    string codigo;
+    cout << "Ingrese codigo de la cancha:" << endl;
+    cin >> codigo;
+
+   Cancha* cancha=canchas.buscarPorCodigo(codigo);
+    if (cancha!=nullptr) {
+        cout << "Codigo de cancha: " << cancha->getCodigo() << "\n";
+        cout << "Tipo de deporte: " << cancha->getTipoDeporte() << "\n";
+        cout << "Precio: " << cancha->getPrecio() << "\n";
+    }
+    else {
+        cout << "Cancha no encontrada" << endl;
+    }
+    system("pause");
+}
+
+void mostrarCanchas(ColeccionCanchas &canchas) {
+    canchas.mostrarCanchas();
+    system("pause");
+}
+
+void modificarPrecio(ColeccionCanchas& canchas) {
+    double nuevoPrecio;
+    string codigo;
+    cout << "Ingrese codigo de la cancha:" << endl;
+    cin >> codigo;
+
+    do {
+        cout << "Ingrese nuevo precio de la cancha:" << endl;
+        cin >> nuevoPrecio;
+
+        if (nuevoPrecio < 0) {
+            cout << "Ingrese un precio positivo" << endl;
+        }
+    } while (nuevoPrecio < 0);
+   
+
+    bool precio = canchas.modificarPrecio(codigo, nuevoPrecio);
+    if (precio) {
+        cout << "El precio de la cancha " << codigo << " ha sido modificado" << endl;
+       }
+    else {
+        cout << "Ese codigo no existe" << endl;
+    }
+    system("pause");
+}
+
+
+void menuGestionCanchas(ColeccionCanchas& canchas) {
+     int opc;
+
+     do {
+         system("cls");
+
+
+         cout << "------  Gestion de Canchas  ------\n";
+         cout << "Seleccione una opcion: \n";
+         cout << "------------------------------------\n";
+         cout << "1- Registrar una cancha\n";
+         cout << "2- Modificar precio de cancha\n";
+         cout << "3- Buscar cancha\n";
+         cout << "4- Mostrar disponibilidad de cancha\n";
+         cout << "5- Mostrar canchas\n";
+         cout << "7- Regresar al menu\n";
+         cin >> opc;
+        
+     
+         switch (opc) {
+         case 1:
+             cout << "------Registrar una cancha------\n";
+             ingresarCancha(canchas);
+             break;
+         case 2:
+             cout << "------Modificar precio de cancha------\n";
+             modificarPrecio(canchas);
+             break;
+         case 3:
+             cout << "------Buscar cancha------\n";
+             buscarCancha(canchas);
+             break;
+         case 4:
+             cout << "------Disponibilidad de cancha------\n";
+             mostrarDisponibilidad(canchas);
+             break;
+         case 5:
+             cout << "------Mostrar canchas------\n";
+             mostrarCanchas(canchas);
+             break;
+         case 7:
+             break;
+         default:
+             cout << "Opcion invalida\n";
+             break;
+
+         }
+
+     } while (opc != 6);
+     system("pause");
+     }
+
 int main() {
+    ColeccionCanchas canchas;
+    int opc;
 
-    cout << "Hola" << endl;
+    do{
+        system("cls");
+    cout << "Seleccione una opcion :\n";
+    cout << "1.Gestion Canchas\n";
 
+    cin >> opc;
+
+    switch (opc){
+        case 1: 
+            cout<<"Gestion Canchas\n";
+            menuGestionCanchas(canchas);
+            break;
+     default: 
+         cout << "Opcion invalida\n";
+         break;
+
+    }
+
+    } while (opc != 7);
+
+    system("pause");
     return 0;
 }
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
