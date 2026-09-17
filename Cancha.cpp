@@ -24,9 +24,11 @@ double Cancha:: getPrecio() {
 void Cancha::setPrecio(double nuevoPrecio) {
 	precioHora = nuevoPrecio;
 }
+
 char Cancha::getConsultaEstado(int posicion) {
 	return estado[posicion]; 
 }
+
 bool Cancha::setEstado(int posicion, char nuevoEstado) {
 
 	if (nuevoEstado == 'M' && estado[posicion] == 'O') { //Franja ocupada no puede recibir M
@@ -34,6 +36,7 @@ bool Cancha::setEstado(int posicion, char nuevoEstado) {
 	}
 	else {
 		estado[posicion] = nuevoEstado;
+		return true;
 	}
 }
 void Cancha::mostrarDisponibilidad() {

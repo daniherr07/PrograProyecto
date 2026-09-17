@@ -1,0 +1,78 @@
+#include "ColeccionCanchas.h"
+
+
+ColeccionCanchas::ColeccionCanchas(){
+	capacidad = 10;
+	cantidad = 0;
+	canchas = new Cancha * [capacidad]; // Crea el objeto cancha* en el arreglo senalado por cancha**
+}
+
+ColeccionCanchas::~ColeccionCanchas() {
+	for (int i = 0; i < 10; i++) {
+	delete canchas[i]; //Elimina cancha del arreglo cancha*
+}
+	delete[] canchas; 
+}
+
+bool ColeccionCanchas::existeCodigo(string codigo) {
+	for (int i = 0; i < cantidad; i++) {
+	if (canchas[i]->getCodigo() == codigo) {
+		return true;
+	}
+}
+		return false;
+}
+
+bool ColeccionCanchas::registrarCancha(string codigo, string tipo, double precio) {
+	if (existeCodigo(codigo)) {
+		return false;  //el codigo ya existe entonces no puede regitrarse
+	}
+	else if (capacidad<=cantidad) { // Ya esta en el maximo de canchas
+		return false;
+	}
+	canchas[cantidad]= new Cancha(codigo,tipo,precio);
+	cantidad++;
+	return true;
+}
+Cancha* ColeccionCanchas::buscarPorCodigo(string codigo) {
+	for (int i = 0; i < cantidad; i++) {
+	if (canchas[i]->getCodigo() == codigo) {
+		return canchas[i];
+	}
+}
+	return nullptr; // el codigo no existe
+}
+
+bool ColeccionCanchas::modificarPrecio(string codigo, double nuevoPrecio){
+	Cancha* cancha = buscarPorCodigo(codigo);
+	if (cancha == nullptr) {
+		return false;
+	}
+	cancha->setPrecio(nuevoPrecio);
+	return true;
+}
+
+void ColeccionCanchas::mostrarDisponibilidad(string codigo) {
+	Cancha* cancha = buscarPorCodigo(codigo);
+	if (cancha == nullptr) {
+		cout << "No existe cancha con ese codigo";
+	}
+	else {
+		cancha->mostrarDisponibilidad();
+	}
+}
+int ColeccionCanchas::getCantidad() {
+	return cantidad;
+}
+void ColeccionCanchas::mostrarCanchas(){
+	if (cantidad == 0) {
+		cout << "Aun no hay canchas registradas";
+	}
+	else {
+		for (int i = 0; i < cantidad;i++) {
+			cout << "Codigo de cancha: " << canchas[i]->getCodigo();
+			cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte();
+			cout << "Precio: " << canchas[i]->getPrecio();
+		}
+	}
+}
