@@ -5,7 +5,7 @@
 class ColeccionCanchas
 {
 private:
-	Cancha** canchas; //dinamico, arreglo de punteros que senala un arreglo de cancha*
+	Cancha** canchas; //Arreglo de punteros que senala un arreglo de punteros cancha*
 	int cantidad;
 	int capacidad;
 

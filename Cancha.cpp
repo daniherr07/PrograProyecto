@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-Cancha::Cancha(string codigoNuevo, string tipo, double precio) {
+Cancha::Cancha(string codigoNuevo, string tipo, double precio) { //Constructor con parametros, franja en 'L'
 	codigo = codigoNuevo;
 	tipoDeporte = tipo;
 	precioHora = precio;
@@ -32,7 +32,7 @@ char Cancha::getConsultaEstado(int posicion) {
 	return estado[posicion]; 
 }
 
-bool Cancha::setEstado(int posicion, char nuevoEstado) {
+bool Cancha::setEstado(int posicion, char nuevoEstado) { //Modifica la franja
 	if (posicion < 0 || posicion>11) { // Evita posiciones incorrectas
 		return false;
 	}
@@ -44,7 +44,7 @@ bool Cancha::setEstado(int posicion, char nuevoEstado) {
 		return true;
 	}
 }
-void Cancha::mostrarDisponibilidad() {
+void Cancha::mostrarDisponibilidad() { // Muestra las franjas de las canchas con su estado
 	int hora = 8;
 
 	cout << "Disponibilidad de la Cancha: " << codigo << endl;

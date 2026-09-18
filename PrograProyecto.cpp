@@ -60,25 +60,62 @@ void modificarPrecio(ColeccionCanchas& canchas) {
     string codigo;
     cout << "Ingrese codigo de la cancha:" << endl;
     cin >> codigo;
+    Cancha* cancha = canchas.buscarPorCodigo(codigo);
+    if (cancha != nullptr) {
+        do {
+            cout << "Ingrese nuevo precio de la cancha:" << endl;
+            cin >> nuevoPrecio;
 
-    do {
-        cout << "Ingrese nuevo precio de la cancha:" << endl;
-        cin >> nuevoPrecio;
+            if (nuevoPrecio < 0) {
+                cout << "Ingrese un precio positivo" << endl;
+            }
+        } while (nuevoPrecio < 0);
 
-        if (nuevoPrecio < 0) {
-            cout << "Ingrese un precio positivo" << endl;
-        }
-    } while (nuevoPrecio < 0);
-   
-
-    bool precio = canchas.modificarPrecio(codigo, nuevoPrecio);
-    if (precio) {
+        canchas.modificarPrecio(codigo, nuevoPrecio);
         cout << "El precio de la cancha " << codigo << " ha sido modificado" << endl;
-       }
+    }
     else {
         cout << "Ese codigo no existe" << endl;
     }
     system("pause");
+}
+
+void mantenimiento(ColeccionCanchas& canchas) {
+    int hora;
+    string codigo;
+    char actualEstado;
+
+        cout << "Ingrese codigo de la cancha:" << endl;
+        cin >> codigo;
+        Cancha* cancha = canchas.buscarPorCodigo(codigo);
+     
+        if (cancha != nullptr) { //Verifica que el codigo exista
+            do {
+                cout << "Ingrese la hora de 8 a 19 hrs que quiere poner en mantenimiento o libre:" << endl;
+                cin >> hora;
+
+                if (hora < 8 || hora>19) {
+                    cout << "Ingrese hora valida" << endl;
+                }
+            } while (hora < 8 || hora>19); // Verifica que sea una hora valida
+
+            do {
+                cout << "Ingrese 'M' de en mantenimiento o 'L' de libre:" << endl;
+                cin >> actualEstado;
+
+                if (actualEstado != 'M' && actualEstado != 'L') {
+                    cout << "Solo se permite 'M' o 'L'" << endl;
+                }
+            } while (actualEstado != 'M' && actualEstado != 'L'); //Verifica opciones aceptadas
+
+            int pos = hora - 8; // Da posicion de la hora en el arreglo de la cancha
+            cancha->setEstado(pos, actualEstado); // Modifica el estado de la hora
+            cout << "Estado de la cancha "<<codigo<<" a las " << hora << ":00" << " en " << cancha->getConsultaEstado(pos) << endl;
+        }
+        else {
+                cout << "El codigo no existe" << endl;
+        }
+        system("pause");
 }
 
 
@@ -97,6 +134,7 @@ void menuGestionCanchas(ColeccionCanchas& canchas) {
          cout << "3- Buscar cancha\n";
          cout << "4- Mostrar disponibilidad de cancha\n";
          cout << "5- Mostrar canchas\n";
+         cout << "6- Ingresar franja en mantenimiento o libre\n";
          cout << "7- Regresar al menu\n";
          cin >> opc;
         
@@ -122,15 +160,18 @@ void menuGestionCanchas(ColeccionCanchas& canchas) {
              cout << "------Mostrar canchas------\n";
              mostrarCanchas(canchas);
              break;
+         case 6:
+             cout << "------Ingresar franja en mantenimiento o libre------\n";
+             mantenimiento(canchas);
+             break;
          case 7:
              break;
          default:
              cout << "Opcion invalida\n";
              break;
-
          }
 
-     } while (opc != 6);
+     } while (opc != 7);
      system("pause");
      }
 
@@ -140,8 +181,14 @@ int main() {
 
     do{
         system("cls");
+        cout << "\tCentro Deportivo Zona Activa\t\n" << endl;
+    cout << "1. Gestion Canchas\n";
+    cout << "2. Gestion Clientes\n";
+    cout << "3. Gestion de reservas\n";
+    cout << "4. Gestion de listado de espera\n";
+    cout << "5. Reportes y estadisticas\n";
+    cout << "6. Salir\n" << endl;
     cout << "Seleccione una opcion :\n";
-    cout << "1.Gestion Canchas\n";
 
     cin >> opc;
 
@@ -150,14 +197,16 @@ int main() {
             cout<<"Gestion Canchas\n";
             menuGestionCanchas(canchas);
             break;
+        case 6:
+            break;
      default: 
          cout << "Opcion invalida\n";
          break;
-
     }
 
-    } while (opc != 7);
+    } while (opc != 6);
 
+    cout << "\t Has salido del sistema" << endl;
     system("pause");
     return 0;
 }

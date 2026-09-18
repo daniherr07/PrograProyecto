@@ -4,7 +4,7 @@
 ColeccionCanchas::ColeccionCanchas(){
 	capacidad = 10;
 	cantidad = 0;
-	canchas = new Cancha * [capacidad]; // Crea arreglo de punteros a cancha* senalado por cancha**
+	canchas = new Cancha * [capacidad]; //Dinamico, crea arreglo de punteros a cancha* senalado por cancha**
 }
 
 ColeccionCanchas::~ColeccionCanchas() {
@@ -30,7 +30,7 @@ bool ColeccionCanchas::registrarCancha(string codigo, string tipo, double precio
 	else if (cantidad>=capacidad) { // Ya esta en el maximo de canchas
 		return false;
 	}
-	canchas[cantidad]= new Cancha(codigo,tipo,precio);
+	canchas[cantidad]= new Cancha(codigo,tipo,precio); // crea objeto cancha
 	cantidad++;
 	return true;
 }
@@ -48,7 +48,7 @@ bool ColeccionCanchas::modificarPrecio(string codigo, double nuevoPrecio){
 	if (cancha == nullptr) {
 		return false;
 	}
-	cancha->setPrecio(nuevoPrecio);
+	cancha->setPrecio(nuevoPrecio); // Modifica el precio
 	return true;
 }
 
@@ -61,7 +61,7 @@ void ColeccionCanchas::mostrarDisponibilidad(string codigo) {
 		cancha->mostrarDisponibilidad();
 	}
 }
-int ColeccionCanchas::getCantidad() {
+int ColeccionCanchas::getCantidad() { 
 	return cantidad;
 }
 void ColeccionCanchas::mostrarCanchas(){
@@ -72,7 +72,7 @@ void ColeccionCanchas::mostrarCanchas(){
 		for (int i = 0; i < cantidad;i++) {
 			cout << "Codigo de cancha: " << canchas[i]->getCodigo()<<"\n";
 			cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte()<<"\n";
-			cout << "Precio: " << canchas[i]->getPrecio()<<"\n";
+			cout << "Precio: " << canchas[i]->getPrecio() << "\n" << endl;
 		}
 	}
 }
