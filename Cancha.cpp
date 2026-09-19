@@ -1,8 +1,7 @@
 #include "Cancha.h"
 #include <iostream>
-using namespace std;
 
-Cancha::Cancha(string codigoNuevo, string tipo, double precio) { //Constructor con parametros, franja en 'L'
+Cancha::Cancha(std::string codigoNuevo, std::string tipo, double precio) { //Constructor con parametros, franja en 'L'
 	codigo = codigoNuevo;
 	tipoDeporte = tipo;
 	precioHora = precio;
@@ -11,10 +10,10 @@ Cancha::Cancha(string codigoNuevo, string tipo, double precio) { //Constructor c
 		estado[i] = 'L';
 	}
 }
-string Cancha :: getCodigo() {
+std::string Cancha :: getCodigo() {
 	return codigo;
 }
-string Cancha:: getTipoDeporte() {
+std::string Cancha:: getTipoDeporte() {
 	return tipoDeporte;
 }
 double Cancha:: getPrecio() {
@@ -47,9 +46,9 @@ bool Cancha::setEstado(int posicion, char nuevoEstado) { //Modifica la franja
 void Cancha::mostrarDisponibilidad() { // Muestra las franjas de las canchas con su estado
 	int hora = 8;
 
-	cout << "Disponibilidad de la Cancha: " << codigo << endl;
+	std::cout << "Disponibilidad de la Cancha: " << codigo << std::endl;
 	for (int i = 0; i < 12;i++) {
-		cout << hora << ":00" << " - " << estado[i] << endl;
+		std::cout << hora << ":00" << " - " << estado[i] << std::endl;
 		hora++;
 	}
 

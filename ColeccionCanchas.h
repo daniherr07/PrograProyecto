@@ -1,6 +1,6 @@
 #pragma once
 #include "Cancha.h"
-
+#include <string>
 
 class ColeccionCanchas
 {
@@ -13,11 +13,11 @@ public:
     ColeccionCanchas();
     ~ColeccionCanchas();
 
-    bool existeCodigo(string codigo);
-    bool registrarCancha(string codigo, string tipo, double precio);
-    bool modificarPrecio(string codigo, double nuevoPrecio);
-    void mostrarDisponibilidad(string codigo);
-    Cancha* buscarPorCodigo(string codigo);
+    bool existeCodigo(std::string codigo);
+    bool registrarCancha(std::string codigo, std::string tipo, double precio);
+    bool modificarPrecio(std::string codigo, double nuevoPrecio);
+    void mostrarDisponibilidad(std::string codigo);
+    Cancha* buscarPorCodigo(std::string codigo);
     int getCantidad();
     void mostrarCanchas();
 };

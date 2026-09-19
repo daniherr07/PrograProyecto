@@ -1,27 +1,22 @@
-#ifndef CLIENTE_H
-#define CLIENTE_H
-
+#pragma once
 #include <string>
-using namespace std;
-
 class Cliente {
 private:
-    string identificacion;
-    string nombreCompleto;
-    string telefono;
+    std::string identificacion;
+    std::string nombreCompleto;
+    std::string telefono;
 
 public:
     Cliente();
-    Cliente(string identificacion, string nombreCompleto, string telefono);
+    Cliente(std::string identificacion, std::string nombreCompleto, std::string telefono);
 
-    string getIdentificacion() const;
-    string getNombreCompleto() const;
-    string getTelefono() const;
+    std::string getIdentificacion() const;
+    std::string getNombreCompleto() const;
+    std::string getTelefono() const;
 
-    void setNombreCompleto(string nombreCompleto);
-    void setTelefono(string telefono);
+    void setNombreCompleto(std::string nombreCompleto);
+    void setTelefono(std::string telefono);
 
     void mostrar() const;
 };
 
-#endif

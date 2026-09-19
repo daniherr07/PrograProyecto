@@ -1,20 +1,18 @@
 #pragma once
-#include <iostream>
 #include <string>
-using namespace std;
 
 class Cancha
 {
 private:
-	string codigo;
-	string tipoDeporte;
+	std::string codigo;
+	std::string tipoDeporte;
 	double precioHora;
 	char estado[12]; // Auto, arreglo (char) para saber la disponibilidad del horario
 
 public:
-	Cancha(string codigo, string tipo, double precio); //constructor
-	string getCodigo();
-	string getTipoDeporte();
+	Cancha(std::string codigo, std::string tipo, double precio); //constructor
+	std::string getCodigo();
+	std::string getTipoDeporte();
 	double getPrecio();
 
 	void setPrecio(double nuevoPrecio);

@@ -1,16 +1,14 @@
-#ifndef GESTIONCLIENTES_H
-#define GESTIONCLIENTES_H
-
+#pragma once
 #include "Cliente.h"
 #include <string>
-using namespace std;
 
-const int MAX_CLIENTES = 100;
+
 
 class Reserva;
 
 class GestionClientes {
 private:
+    const int MAX_CLIENTES = 100;
     Cliente** clientes;
     int cantidad;
 
@@ -18,16 +16,14 @@ public:
     GestionClientes();
     ~GestionClientes();
 
-    bool registrarCliente(string identificacion, string nombreCompleto, string telefono);
+    bool registrarCliente(std::string identificacion, std::string nombreCompleto, std::string telefono);
     void mostrarListado() const;
-    Cliente* buscarCliente(string identificacion) const;
+    Cliente* buscarCliente(std::string identificacion) const;
 
-    bool existeCliente(string identificacion) const;
-    int buscarIndice(string identificacion) const;
+    bool existeCliente(std::string identificacion) const;
+    int buscarIndice(std::string identificacion) const;
     int getCantidad() const;
     Cliente* getClientePorIndice(int indice) const;
 
-    void mostrarReservasDeCliente(string identificacion, Reserva** reservas, int cantidadReservas) const;
+    void mostrarReservasDeCliente(std::string identificacion, Reserva** reservas, int cantidadReservas) const;
 };
-
-#endif

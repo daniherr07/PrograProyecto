@@ -1,5 +1,5 @@
 #include "ColeccionCanchas.h"
-
+#include <iostream>
 
 ColeccionCanchas::ColeccionCanchas(){
 	capacidad = 10;
@@ -14,7 +14,7 @@ ColeccionCanchas::~ColeccionCanchas() {
 	delete[] canchas; 
 }
 
-bool ColeccionCanchas::existeCodigo(string codigo) {
+bool ColeccionCanchas::existeCodigo(std::string codigo) {
 	for (int i = 0; i < cantidad; i++) {
 	if (canchas[i]->getCodigo() == codigo) {
 		return true;
@@ -23,7 +23,7 @@ bool ColeccionCanchas::existeCodigo(string codigo) {
 		return false;
 }
 
-bool ColeccionCanchas::registrarCancha(string codigo, string tipo, double precio) {
+bool ColeccionCanchas::registrarCancha(std::string codigo, std::string tipo, double precio) {
 	if (existeCodigo(codigo)) {
 		return false;  //el codigo ya existe entonces no puede regitrarse
 	}
@@ -34,7 +34,7 @@ bool ColeccionCanchas::registrarCancha(string codigo, string tipo, double precio
 	cantidad++;
 	return true;
 }
-Cancha* ColeccionCanchas::buscarPorCodigo(string codigo) {
+Cancha* ColeccionCanchas::buscarPorCodigo(std::string codigo) {
 	for (int i = 0; i < cantidad; i++) {
 	if (canchas[i]->getCodigo() == codigo) {
 		return canchas[i];
@@ -43,7 +43,7 @@ Cancha* ColeccionCanchas::buscarPorCodigo(string codigo) {
 	return nullptr; // el codigo no existe
 }
 
-bool ColeccionCanchas::modificarPrecio(string codigo, double nuevoPrecio){
+bool ColeccionCanchas::modificarPrecio(std::string codigo, double nuevoPrecio){
 	Cancha* cancha = buscarPorCodigo(codigo);
 	if (cancha == nullptr) {
 		return false;
@@ -52,10 +52,10 @@ bool ColeccionCanchas::modificarPrecio(string codigo, double nuevoPrecio){
 	return true;
 }
 
-void ColeccionCanchas::mostrarDisponibilidad(string codigo) {
+void ColeccionCanchas::mostrarDisponibilidad(std::string codigo) {
 	Cancha* cancha = buscarPorCodigo(codigo);
 	if (cancha == nullptr) {
-		cout << "No existe cancha con ese codigo" << endl;
+		std::cout << "No existe cancha con ese codigo" << std::endl;
 	}
 	else {
 		cancha->mostrarDisponibilidad();
@@ -66,13 +66,13 @@ int ColeccionCanchas::getCantidad() {
 }
 void ColeccionCanchas::mostrarCanchas(){
 	if (cantidad == 0) {
-		cout << "Aun no hay canchas registradas"<<endl;
+		std::cout << "Aun no hay canchas registradas"<< std::endl;
 	}
 	else {
 		for (int i = 0; i < cantidad;i++) {
-			cout << "Codigo de cancha: " << canchas[i]->getCodigo()<<"\n";
-			cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte()<<"\n";
-			cout << "Precio: " << canchas[i]->getPrecio() << "\n" << endl;
+			std::cout << "Codigo de cancha: " << canchas[i]->getCodigo()<<"\n";
+			std::cout << "Tipo de deporte: " << canchas[i]->getTipoDeporte()<<"\n";
+			std::cout << "Precio: " << canchas[i]->getPrecio() << "\n" << std::endl;
 		}
 	}
 }
