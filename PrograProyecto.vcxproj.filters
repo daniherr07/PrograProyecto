@@ -22,6 +22,10 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="GestionClientes.cpp">
+    <ClCompile Include="Cancha.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ColeccionCanchas.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,6 +34,10 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="GestionClientes.h">
+    <ClInclude Include="Cancha.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ColeccionCanchas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
