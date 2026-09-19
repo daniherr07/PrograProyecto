@@ -139,20 +139,17 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cancha.cpp" />
     <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="ColeccionCanchas.cpp" />
     <ClCompile Include="GestionClientes.cpp" />
     <ClCompile Include="PrograProyecto.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cliente.h" />
-    <ClInclude Include="GestionClientes.h" />
-    <ClCompile Include="Cancha.cpp" />
-    <ClCompile Include="ColeccionCanchas.cpp" />
-    <ClCompile Include="PrograProyecto.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Cancha.h" />
+    <ClInclude Include="Cliente.h" />
     <ClInclude Include="ColeccionCanchas.h" />
+    <ClInclude Include="GestionClientes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
