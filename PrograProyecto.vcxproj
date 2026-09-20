@@ -139,7 +139,28 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cancha.cpp" />
+    <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="ColeccionCanchas.cpp" />
+    <ClCompile Include="Espera.cpp" />
+    <ClCompile Include="GestionClientes.cpp" />
+    <ClCompile Include="GestionEspera.cpp" />
+    <ClCompile Include="GestionReservas.cpp" />
     <ClCompile Include="PrograProyecto.cpp" />
+    <ClCompile Include="Reportes.cpp" />
+    <ClCompile Include="Reserva.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cancha.h" />
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="ColeccionCanchas.h" />
+    <ClInclude Include="Espera.h" />
+    <ClInclude Include="GestionClientes.h" />
+    <ClInclude Include="GestionEspera.h" />
+    <ClInclude Include="GestionReservas.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Reportes.h" />
+    <ClInclude Include="Reserva.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
