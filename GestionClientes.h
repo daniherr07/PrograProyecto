@@ -1,5 +1,4 @@
-#ifndef GESTIONCLIENTES_H
-#define GESTIONCLIENTES_H
+#pragma once
 
 #include "Cliente.h"
 #include <string>
@@ -30,4 +29,3 @@ public:
     void mostrarReservasDeCliente(string identificacion, Reserva** reservas, int cantidadReservas) const;
 };
 
-#endif

@@ -1,6 +1,4 @@
-#ifndef CLIENTE_H
-#define CLIENTE_H
-
+#pragma once
 #include <string>
 using namespace std;
 
@@ -24,4 +22,4 @@ public:
     void mostrar() const;
 };
 
-#endif
+
