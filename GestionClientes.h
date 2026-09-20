@@ -17,13 +17,11 @@ public:
     ~GestionClientes();
 
     bool registrarCliente(std::string identificacion, std::string nombreCompleto, std::string telefono);
-    void mostrarListado() const;
+    std::string mostrarListado() const;
     Cliente* buscarCliente(std::string identificacion) const;
 
     bool existeCliente(std::string identificacion) const;
     int buscarIndice(std::string identificacion) const;
     int getCantidad() const;
     Cliente* getClientePorIndice(int indice) const;
-
-    void mostrarReservasDeCliente(std::string identificacion, Reserva** reservas, int cantidadReservas) const;
 };

@@ -17,6 +17,6 @@ public:
     void setNombreCompleto(std::string nombreCompleto);
     void setTelefono(std::string telefono);
 
-    void mostrar() const;
+    std::string mostrar() const;
 };
 

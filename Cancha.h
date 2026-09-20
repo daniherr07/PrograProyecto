@@ -18,6 +18,8 @@ public:
 	void setPrecio(double nuevoPrecio);
 	char getConsultaEstado(int posicion); // Consulta la disponibilidad en el arreglo
 	bool setEstado(int posicion, char nuevoEstado); // Modifica la disponibilidad
-	void mostrarDisponibilidad();
+	std::string mostrarDisponibilidad();
+	std::string mostrarLibre();
+	bool verificarDisponibilidad(int indice); // Verifica si la franja esta libre o no
 };
 

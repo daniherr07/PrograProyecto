@@ -16,9 +16,9 @@ public:
     bool existeCodigo(std::string codigo);
     bool registrarCancha(std::string codigo, std::string tipo, double precio);
     bool modificarPrecio(std::string codigo, double nuevoPrecio);
-    void mostrarDisponibilidad(std::string codigo);
     Cancha* buscarPorCodigo(std::string codigo);
     int getCantidad();
+    Cancha* getCanchaPorIndice(int indice);
     void mostrarCanchas();
 };
 

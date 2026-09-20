@@ -1,5 +1,6 @@
 #include "GestionClientes.h"
 #include <iostream>
+#include <sstream>
 
 GestionClientes::GestionClientes() {
     clientes = new Cliente * [MAX_CLIENTES];
@@ -46,15 +47,20 @@ bool GestionClientes::registrarCliente(std::string identificacion, std::string n
     return true;
 }
 
-void GestionClientes::mostrarListado() const {
+std::string GestionClientes::mostrarListado() const {
+    std::stringstream ss;
+
     if (cantidad == 0) {
         std::cout << "\nNo hay clientes registrados.\n";
-        return;
+        return "";
     }
-    std::cout << "\n----- LISTADO DE CLIENTES (" << cantidad << ") -----\n";
+    
+    ss << "\n----- LISTADO DE CLIENTES (" << cantidad << ") -----\n";
+
     for (int i = 0; i < cantidad; i++) {
-        clientes[i]->mostrar();
+        ss << clientes[i]->mostrar() << "\n";
     }
+    return ss.str();
 }
 
 Cliente* GestionClientes::buscarCliente(std::string identificacion) const {

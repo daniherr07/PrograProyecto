@@ -6,17 +6,10 @@
 #include "Menu.h"
 
 
-
-
-// --- main de prueba (mientras se integra con el resto del equipo) ---
-
-
 int main() {
-    GestionClientes clientes;
-    ColeccionCanchas canchas;
     Menu menu;
 
-	menu.menuPrincipal(clientes, canchas);
+	menu.menuPrincipal();
 
     return 0;
 }

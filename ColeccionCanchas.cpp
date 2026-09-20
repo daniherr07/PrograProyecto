@@ -52,17 +52,14 @@ bool ColeccionCanchas::modificarPrecio(std::string codigo, double nuevoPrecio){
 	return true;
 }
 
-void ColeccionCanchas::mostrarDisponibilidad(std::string codigo) {
-	Cancha* cancha = buscarPorCodigo(codigo);
-	if (cancha == nullptr) {
-		std::cout << "No existe cancha con ese codigo" << std::endl;
-	}
-	else {
-		cancha->mostrarDisponibilidad();
-	}
-}
 int ColeccionCanchas::getCantidad() { 
 	return cantidad;
+}
+Cancha* ColeccionCanchas::getCanchaPorIndice(int indice) {
+	if (indice < 0 || indice >= cantidad) {
+		return nullptr;
+	}
+	return canchas[indice];
 }
 void ColeccionCanchas::mostrarCanchas(){
 	if (cantidad == 0) {

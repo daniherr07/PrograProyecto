@@ -1,5 +1,6 @@
 #include "Cliente.h"
 #include <iostream>
+#include  <sstream>
 Cliente::Cliente() {
     identificacion = "";
     nombreCompleto = "";
@@ -19,8 +20,10 @@ std::string Cliente::getTelefono() const { return telefono; }
 void Cliente::setNombreCompleto(std::string nombreCompleto) { this->nombreCompleto = nombreCompleto; }
 void Cliente::setTelefono(std::string telefono) { this->telefono = telefono; }
 
-void Cliente::mostrar() const {
-    std::cout << "ID: " << identificacion
+std::string Cliente::mostrar() const {
+    std::stringstream ss;
+    ss << "ID: " << identificacion
         << " | Nombre: " << nombreCompleto
-        << " | Telefono: " << telefono << std::endl;
+        << " | Telefono: " << telefono;
+    return ss.str();
 }
